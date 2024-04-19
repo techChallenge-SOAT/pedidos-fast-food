@@ -1,19 +1,8 @@
-# Documentação do TechChallenge: Sistema de Gerenciamento de Pedidos para Lanchonete
+# TechChallenge: Microsserviço de Pedidos
 
 ## Introdução
 
-Bem-vindo à documentação do projeto para o sistema de gerenciamento de pedidos de uma lanchonete. Este guia fornece instruções detalhadas sobre como configurar, executar e interagir com a API backend.
-
-## O Problema
-
-Há uma lanchonete de bairro que está expandindo devido seu grande sucesso. Porém, com a expansão e sem um sistema de controle de pedidos, o atendimento aos clientes pode ser caótico e confuso. Por exemplo, imagine que um cliente faça um pedido complexo, como um hambúrguer personalizado com ingredientes específicos, acompanhado de batatas fritas e uma bebida. O atendente pode anotar o pedido em um papel e entregá-lo à cozinha, mas não há garantia de que o pedido será preparado corretamente.
-
-Sem um sistema de controle de pedidos, pode haver confusão entre os atendentes e a cozinha, resultando em atrasos na preparação e entrega dos pedidos. Os pedidos podem ser perdidos, mal interpretados ou esquecidos, levando à insatisfação dos clientes e a perda de negócios.
-
-Em resumo, um sistema de controle de pedidos é essencial para garantir que a lanchonete possa atender os clientes de maneira eficiente, gerenciando seus pedidos e estoques de forma adequada. Sem ele, expandir a lanchonete pode acabar não dando certo, resultando em clientes insatisfeitos e impactando os negócios de forma negativa.
-
-Para solucionar o problema, a lanchonete irá investir em um sistema de autoatendimento de fast food, que é composto por uma série de dispositivos e interfaces que permitem aos clientes selecionar e fazer pedidos sem precisar interagir com um atendente.
-
+Bem-vindo à documentação do projeto para o sistema de gerenciamento de pedidos. Este guia fornece instruções detalhadas sobre como configurar, executar e interagir com a API Pedidos.
 
 ## Pré-requisitos
 
@@ -22,7 +11,6 @@ Antes de iniciar, certifique-se de ter as seguintes ferramentas instaladas em su
 ```
 - Docker & Docker Compose
 ```
-
 
 ## Configuração do Projeto
 
