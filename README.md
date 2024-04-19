@@ -30,6 +30,8 @@ Antes de iniciar, certifique-se de ter as seguintes ferramentas instaladas em su
 	```bash
 	git clone git@github.com:techChallenge-SOAT/pedidos-fast-food.git
 	cd pedidos-fast-food
+	git clone git@github.com:techChallenge-SOAT/pedidos-fast-food.git
+	cd pedidos-fast-food
 	```
 
 2. **Suba a aplicação:**
