@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: backend-fast-food
+  template:
+    metadata:
+      labels:
+        app: backend-fast-food
+    spec:
+      containers:
+        - name: backend-fast-food
+          image: jackienascimento/backend-fast-food:latest
+          ports:
+            - containerPort: 3000
+          env:
+            - name: DATABASE_URL
+              value: postgres://postgres:postgres@postgres-service:5432/bd-clientes-pedidos
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: backend-fast-food-service
+spec:
+  selector:
+    app: backend-fast-food
+  ports:
+    - protocol: TCP
+      port: 3000
+      targetPort: 3000
+  type: NodePort
+  
