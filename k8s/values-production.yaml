@@ -6,28 +6,28 @@ spec:
   replicas: 3
   selector:
     matchLabels:
-      app: backend-fast-food
+      app: pedidos-fast-food
   template:
     metadata:
       labels:
-        app: backend-fast-food
+        app: pedidos-fast-food
     spec:
       containers:
-        - name: backend-fast-food
-          image: jackienascimento/backend-fast-food:latest
+        - name: pedidos-fast-food
+          image: jackienascimento/pedidos-fast-food:latest
           ports:
             - containerPort: 3000
           env:
             - name: DATABASE_URL
-              value: postgres://postgres:postgres@postgres-service:5432/bd-clientes-pedidos
+              value: postgres://postgres:postgres@postgres-service:5432/bd-pedidos
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: backend-fast-food-service
+  name: pedidos-fast-food-service
 spec:
   selector:
-    app: backend-fast-food
+    app: pedidos-fast-food
   ports:
     - protocol: TCP
       port: 3000
