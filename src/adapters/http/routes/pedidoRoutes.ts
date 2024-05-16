@@ -22,7 +22,11 @@ router.get('/', async (_, res: Response) => {
 });
 
 router.post('/', async (req: Request, res: Response) => {
-  const cliente_cpf = String(req.body.cliente_cpf);
+
+  let cliente_cpf = "";
+  if (req.body.cliente_cpf) {
+    cliente_cpf = String(req.body.cliente_cpf);
+  }
 
   if (
     !req.body.itens ||
