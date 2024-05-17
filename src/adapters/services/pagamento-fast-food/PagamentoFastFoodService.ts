@@ -5,7 +5,7 @@ dotenv.config();
 
 export class PagamentoFastFoodService {
     static async efetuarPagamento(id_pedido: string, valor_total: number) {
-        const url = process.env.PAGAMENTO_SERVICO_URL;
+        const url = process.env.PAGAMENTO_FAST_FOOD_URL;
         if (!url) {
           throw new Error('PAGAMENTO_SERVICO_URL não está definido');
         }
