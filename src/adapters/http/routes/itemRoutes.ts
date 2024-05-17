@@ -25,6 +25,7 @@ router.get('/', async (_, res: Response) => {
     const itens = await BuscarItensUseCase.execute();
     return res.status(200).json(itens);
   } catch (error) {
+    console.log(error);
     return res.status(500).json({ message: 'Erro ao buscar os itens.' });
   }
 });

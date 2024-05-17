@@ -1,9 +1,9 @@
 {
 	"info": {
-		"_postman_id": "b08dc1a8-1ab5-4f31-89b7-778b1158fc03",
+		"_postman_id": "e2822f2c-a2bf-4474-b334-5f951425be42",
 		"name": "pedidos-fast-food",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "19858656"
+		"_exporter_id": "9504106"
 	},
 	"item": [
 		{
@@ -273,39 +273,6 @@
 							"path": [
 								"itens",
 								"{{id}}"
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "webhooks",
-			"item": [
-				{
-					"name": "webhooks/mercadopago",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"id_pedido\": \"371a1359-37fe-468c-9f36-b2509fed34e7\",\n    \"status\": \"Pago\"\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "localhost:3000/webhooks/mercadopago",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"webhooks",
-								"mercadopago"
 							]
 						}
 					},
