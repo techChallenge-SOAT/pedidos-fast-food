@@ -8,7 +8,7 @@ CREATE TABLE itens (
 
 CREATE TABLE pedidos (
   id UUID PRIMARY KEY,
-  cliente_cpf VARCHAR(255) NOT NULL,
+  cliente_cpf VARCHAR(255),
   data_pedido TIMESTAMP,
   status VARCHAR(255) NOT NULL DEFAULT 'recebido'
 );
