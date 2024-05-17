@@ -128,19 +128,6 @@ Antes de iniciar, certifique-se de ter as seguintes ferramentas instaladas em su
 		localhost:3000/pedidos/{id}/pagamento
 		```
 
-##  Pagamento
-
- 1. **Gerar pagamento pedido**
-	 - **Método:** `POST`
-	 - **Endpoint:** `/webhooks/mercadopago`
-	 - **Exemplo Requisição:**
-		```json
-		{
-		"id_pedido":"371a1359-37fe-468c-9f36-b2509fed34e7",
-		"status":"Pago"
-		}
-		```
-
 # Caminho feliz para teste
 
 ### Funcionalidade: `Pedido`
