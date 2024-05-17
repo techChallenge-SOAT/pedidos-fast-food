@@ -45,8 +45,8 @@ router.post('/', async (req: Request, res: Response) => {
   const pedido = new Pedido(cliente_cpf);
 
   try {
-    const cliente = await CriarPedidoUseCase.execute(pedido, itens_pedido);
-    return res.status(201).json(cliente);
+    const criarPedido = await CriarPedidoUseCase.execute(pedido, itens_pedido);
+    return res.status(201).json(criarPedido);
   } catch (error) {
     return res.status(500).json({ message: 'Erro ao adicionar o pedido.' });
   }
@@ -55,8 +55,8 @@ router.post('/', async (req: Request, res: Response) => {
 router.get('/:id', async (req: Request, res: Response) => {
   try {
     const id = String(req.params.id);
-    const clientes = await BuscarPedidoPorIdUseCase.execute(id);
-    return res.status(200).json(clientes);
+    const pedidos = await BuscarPedidoPorIdUseCase.execute(id);
+    return res.status(200).json(pedidos);
   } catch (error) {
     return res.status(500).json({ message: 'Erro ao buscar o pedido.' });
   }
@@ -78,8 +78,8 @@ router.patch('/:id', async (req: Request, res: Response) => {
 
   try {
     const status = ConverteStringParaStatusUseCase.execute(statusFromBody);
-    const cliente = await AlterarStatusDoPedidoUseCase.execute(id, status);
-    return res.status(201).json(cliente);
+    const alterarStatusPedido = await AlterarStatusDoPedidoUseCase.execute(id, status);
+    return res.status(201).json(alterarStatusPedido);
   } catch (error) {
     return res.status(500).json({ message: 'Erro ao atualizar o pedido.' });
   }

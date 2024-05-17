@@ -2,6 +2,7 @@ import Pedido from '../../../application/valueObjects/Pedido';
 import { ItemRepository } from '../../../adapters/postgres/item/ItemRepository';
 import { PedidoRepository } from '../../../adapters/postgres/pedido/PedidoRepository';
 import PedidoItem from '../../../application/valueObjects/PedidoItem';
+import { PagamentoFastFoodService } from '../../../adapters/services/pagamento-fast-food/PagamentoFastFoodService';
 
 export class CriarPedidoUseCase {
   static async execute(pedido: Pedido, itens: PedidoItem[]) {
@@ -25,6 +26,10 @@ export class CriarPedidoUseCase {
         );
       }),
     );
+
+    const valor_total = valid_itens.reduce((total, { item, quantidade }) => total + item.preco_unitario * quantidade, 0);
+    await PagamentoFastFoodService.efetuarPagamento(pedido_recebido.id, valor_total);
+
     return pedido_recebido;
   }
 }
