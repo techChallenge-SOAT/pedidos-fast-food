@@ -15,6 +15,10 @@ spec:
       containers:
         - name: pedidos-fast-food
           image: jackienascimento/pedidos-fast-food:latest
+          resources:
+            limits:
+              cpu: "1"
+              memory: "1Gi"
           ports:
             - containerPort: 3000
           env:
