@@ -17,6 +17,7 @@ export class CriarPedidoUseCase {
     );
 
     const pedido_recebido = await PedidoRepository.criar(pedido);
+    
     await Promise.all(
       valid_itens.map(async ({ item, quantidade }) => {
         return PedidoRepository.adicionarItem(

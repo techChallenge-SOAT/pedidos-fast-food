@@ -11,8 +11,8 @@ import sequelize from '../../../config/sequelize';
 
 class Pedido extends Model {
   #id!: string;
-  #cliente_cpf!: string;
-  #data_pedido?: Date;
+  #cliente_cpf?: string;
+  #data_pedido!: Date;
   #status!: string;
   public itens?: Item[];
 
@@ -23,17 +23,17 @@ class Pedido extends Model {
     this.#id = value;
   }
 
-  get cliente_cpf(): string {
+  get cliente_cpf(): string | undefined{
     return this.#cliente_cpf;
   }
   set cliente_cpf(value: string) {
     this.#cliente_cpf = value;
   }
 
-  get data_pedido(): Date | undefined {
+  get data_pedido(): Date {
     return this.#data_pedido;
   }
-  set data_pedido(value: Date | undefined) {
+  set data_pedido(value: Date) {
     this.#data_pedido = value;
   }
 
@@ -72,11 +72,12 @@ Pedido.init(
     },
     cliente_cpf: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
     },
     data_pedido: {
       type: DataTypes.DATE,
-      allowNull: true,
+      allowNull: false,
+      defaultValue: DataTypes.NOW,
     },
     status: {
       type: DataTypes.ENUM(

@@ -6,11 +6,13 @@ CREATE TABLE itens (
   preco_unitario DECIMAL NOT NULL
 );
 
+CREATE TYPE status_pedido AS ENUM ('recebido', 'pago', 'em preparação', 'cancelado', 'pronto', 'finalizado');
+
 CREATE TABLE pedidos (
   id UUID PRIMARY KEY,
-  cliente_cpf VARCHAR(255),
-  data_pedido TIMESTAMP,
-  status VARCHAR(255) NOT NULL DEFAULT 'recebido'
+  cliente_cpf VARCHAR(11),
+  data_pedido TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP NOT NULL,
+status status_pedido NOT NULL DEFAULT 'recebido'
 );
 
 CREATE TABLE pedidos_itens (
