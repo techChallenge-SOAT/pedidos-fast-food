@@ -8,9 +8,9 @@ CREATE TABLE itens (
 
 CREATE TABLE pedidos (
   id UUID PRIMARY KEY,
-  cliente_cpf VARCHAR(255),
-  data_pedido TIMESTAMP,
-  status VARCHAR(255) NOT NULL DEFAULT 'recebido'
+  cliente_cpf VARCHAR(11),
+  data_pedido TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP NOT NULL,
+  status ENUM('recebido', 'pago', 'em preparação', 'cancelado', 'pronto', 'finalizado') NOT NULL DEFAULT 'recebido'
 );
 
 CREATE TABLE pedidos_itens (

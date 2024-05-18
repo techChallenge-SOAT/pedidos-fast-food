@@ -13,6 +13,7 @@ export class PedidoRepository {
       id,
       cliente_cpf: pedido.cliente_cpf,
       status: 'recebido',
+      data_pedido: Date.now(),
     });
   }
 
