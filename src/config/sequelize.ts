@@ -8,7 +8,7 @@ if (!process.env.DATABASE_URL) {
 
 const sequelize = new Sequelize(
   process.env.DATABASE_URL ||
-    'postgres://postgres:postgres@postgres:5432/bd-pedidos',
+    'postgres://postgres:postgres@postgres:5431/bd-pedidos',
   {
     dialect: 'postgres',
     logging: console.log,

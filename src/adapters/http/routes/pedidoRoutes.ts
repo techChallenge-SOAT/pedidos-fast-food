@@ -48,6 +48,7 @@ router.post('/', async (req: Request, res: Response) => {
     const criarPedido = await CriarPedidoUseCase.execute(pedido, itens_pedido);
     return res.status(201).json(criarPedido);
   } catch (error) {
+    console.error(error);
     return res.status(500).json({ message: 'Erro ao adicionar o pedido.' });
   }
 });
@@ -81,6 +82,7 @@ router.patch('/:id', async (req: Request, res: Response) => {
     const alterarStatusPedido = await AlterarStatusDoPedidoUseCase.execute(id, status);
     return res.status(201).json(alterarStatusPedido);
   } catch (error) {
+    console.error(error);
     return res.status(500).json({ message: 'Erro ao atualizar o pedido.' });
   }
 });

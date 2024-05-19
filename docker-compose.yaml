@@ -7,12 +7,15 @@ services:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
     ports:
-      - '5432:5432'
+      - '5431:5432'
     volumes:
       - ./init.sql:/docker-entrypoint-initdb.d/init.sql
       - ./data:/var/lib/postgresql/data
+    networks:
+      - pedidos-network
 
   app:
+    container_name: pedidos
     build:
       context: .
       dockerfile: Dockerfile
@@ -20,11 +23,23 @@ services:
       - '3000:3000'
     volumes:
       - .:/app
-    command: npm start
+    command: npm run dev
     depends_on:
       - postgres
     environment:
       DATABASE_URL: postgres://postgres:postgres@postgres:5432/bd-pedidos
+      PAGAMENTO_FAST_FOOD_URL: http://pagamentos:8000/pagamento
+      PRODUCAO_FAST_FOOD_URL: http://producao:4000
+    networks:
+      - pedidos-network
+      - shared_network
 
 volumes:
   postgres_data:
+
+networks:
+  pedidos-network:
+    driver: bridge
+  shared_network:
+    name: shared-network
+    external: true

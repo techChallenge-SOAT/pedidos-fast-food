@@ -29,7 +29,12 @@ export class CriarPedidoUseCase {
     );
 
     const valor_total = valid_itens.reduce((total, { item, quantidade }) => total + item.preco_unitario * quantidade, 0);
-    await PagamentoFastFoodService.efetuarPagamento(pedido_recebido.id, valor_total);
+    await PagamentoFastFoodService.efetuarPagamento({
+      id_pedido: pedido_recebido.id, 
+      valor: valor_total,
+      descricao_pedido: "",
+      cpf_cliente: pedido_recebido.cliente_cpf
+    });
 
     return pedido_recebido;
   }
