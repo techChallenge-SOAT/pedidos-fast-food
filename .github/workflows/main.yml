@@ -23,7 +23,7 @@ jobs:
         with:
           node-version: '20'
       - name: Run tests
-        run: npm run tests
+        run: npm run test
 
   sonarcloud:
     name: SonarCloud
