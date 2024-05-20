@@ -41,7 +41,7 @@ jobs:
         id: login-ecr
         uses: aws-actions/amazon-ecr-login@v1
         with:
-          us-east-1
+          aws-region: us-east-1
           role-to-assume: arn:aws:iam::103447461627:role/3soat-fiap-role
 
       - name: Deploy Image To AWS
