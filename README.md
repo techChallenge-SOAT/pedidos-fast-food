@@ -150,3 +150,8 @@ Antes de iniciar, certifique-se de ter as seguintes ferramentas instaladas em su
 >4. Atualizar status Pedido para `em preparação`
 >5. Atualizar status Pedido para `pronto`
 >6. Atualizar status Pedido para `finalizado`
+
+
+# Evidências de testes
+- Testes 
+![Testes](./docs/assets/coverage_tests.png)
