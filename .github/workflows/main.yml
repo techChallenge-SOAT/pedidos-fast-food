@@ -56,7 +56,7 @@ jobs:
         run: |
           docker build -t $REGISTRY/$REGISTRY_ALIAS/$REPOSITORY:$IMAGE_TAG .
           docker push $REGISTRY/$REGISTRY_ALIAS/$REPOSITORY:$IMAGE_TAG
-          aws ecr-public tag --repository-name $REPOSITORY --image-id imageTag=$IMAGE_TAG --image-tag latest
+          aws ecr-public tag-resource --repository-name $REPOSITORY --image-id imageTag=$IMAGE_TAG --image-tag latest
       # When we want to deploy to the k8s cluster we can just uncomment the following
       # - name: Configure kubectl
       #   uses: azure/k8s-set-context@v1
