@@ -17,6 +17,7 @@ router.get('/', async (_, res: Response) => {
     const pedidos = await BuscarUltimosPedidosUseCase.execute();
     return res.status(200).json(pedidos);
   } catch (error) {
+    console.error(error)
     return res.status(500).json({ message: 'Erro ao buscar os pedidos.' });
   }
 });

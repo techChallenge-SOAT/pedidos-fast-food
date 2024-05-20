@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: app-deployment
 spec:
-  replicas: 3
+  replicas: 1
   selector:
     matchLabels:
       app: pedidos-fast-food
@@ -14,7 +14,8 @@ spec:
     spec:
       containers:
         - name: pedidos-fast-food
-          image: jackienascimento/pedidos-fast-food:latest
+          image: pedidos-k8s:latest
+          imagePullPolicy: Never
           resources:
             limits:
               cpu: "1"
@@ -23,7 +24,11 @@ spec:
             - containerPort: 3000
           env:
             - name: DATABASE_URL
-              value: postgres://postgres:postgres@postgres-service:5432/bd-pedidos
+              value: postgres://postgres:postgres@host.docker.internal:5431/bd-pedidos
+            - name: PAGAMENTO_FAST_FOOD_URL
+              value: http://pagamentos-fast-food-service:8000/pagamento
+            - name: PRODUCAO_FAST_FOOD_URL
+              value: http://producao-fast-food-service:4000
 ---
 apiVersion: v1
 kind: Service

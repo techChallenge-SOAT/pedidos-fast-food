@@ -42,7 +42,7 @@ export class PedidoRepository {
     return await PedidoModel.findAll({
       where: {
         status: {
-          [Op.not]: 'Finalizado',
+          [Op.not]: 'finalizado',
         },
       },
       limit: 10,
