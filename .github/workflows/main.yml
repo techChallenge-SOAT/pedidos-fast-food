@@ -43,22 +43,19 @@ jobs:
 
       - name: Login to Amazon ECR
         id: login-ecr
-        uses: aws-actions/amazon-ecr-login@v1
+        uses: aws-actions/amazon-ecr-login@v2
         with:
-          aws-region: us-east-1
-          role-to-assume: arn:aws:iam::103447461627:role/3soat-fiap-role
+          registry-type: public
 
-      - name: Deploy Image To AWS
-        id: build-image
+      - name: Build, tag, and push docker image to Amazon ECR Public
         env:
-          aws-region: us-east-1
-          ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-          ECR_REPOSITORY: pedidos-ms
+          REGISTRY: ${{ steps.login-ecr-public.outputs.registry }}
+          REGISTRY_ALIAS: my-ecr-public-registry-alias
+          REPOSITORY: my-ecr-public-repo
           IMAGE_TAG: ${{ github.sha }}
         run: |
-          docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
-          docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
-          echo "::set-output name=image::$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG"
+          docker build -t $REGISTRY/$REGISTRY_ALIAS/$REPOSITORY:$IMAGE_TAG .
+          docker push $REGISTRY/$REGISTRY_ALIAS/$REPOSITORY:$IMAGE_TAG
       # When we want to deploy to the k8s cluster we can just uncomment the following
       # - name: Configure kubectl
       #   uses: azure/k8s-set-context@v1
