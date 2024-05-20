@@ -4,7 +4,7 @@ export class ConverteStringParaStatusUseCase {
   static execute(statusString: string): Status {
     const status = statusString.toLowerCase();
 
-    if (!(status in Status)) {
+    if (!Object.values(Status).includes(status as Status)) {
       throw new Error('Status inválido');
     }
 

@@ -11,7 +11,7 @@ export class ProducaoFastFoodService {
     }
 
     try {
-      await axios.post(url, pedido);
+      await axios.post(`${url}/pedido`, pedido);
     } catch (error) {
       console.error('Erro ao enviar solicitação para producao-fast-food:', error);
     }

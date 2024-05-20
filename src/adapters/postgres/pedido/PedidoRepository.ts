@@ -69,6 +69,7 @@ export class PedidoRepository {
 
   static async obterStatus(id: string): Promise<string | null> {
     try {
+      console.log({id})
       const pedido = await PedidoModel.findByPk(id);
       return pedido ? pedido.status : null;
     } catch (error) {
