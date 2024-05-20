@@ -2,6 +2,10 @@ import { PedidoRepository } from '../../../adapters/postgres/pedido/PedidoReposi
 
 export class BuscarPedidoPorIdUseCase {
   static async execute(id: string) {
-    return PedidoRepository.buscarPorId(id);
+    const pedido = await PedidoRepository.buscarPorId(id);
+    if (!pedido) {
+      throw new Error('Pedido não encontrado');
+    }
+    return pedido;
   }
 }
