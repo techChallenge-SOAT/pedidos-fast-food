@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: pedidos-fast-food
-          image: pedidos-k8s:latest
+          image: public.ecr.aws/o9d4t2y8/pedidos-fast-food:latest
           imagePullPolicy: Never
           resources:
             limits:
