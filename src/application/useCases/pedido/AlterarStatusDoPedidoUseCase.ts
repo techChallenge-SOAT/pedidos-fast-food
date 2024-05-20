@@ -8,14 +8,19 @@ export class AlterarStatusDoPedidoUseCase {
       throw new Error(`Status inválido ${status}`);
     }
 
+    const pedidoAtual = await PedidoRepository.buscarPorId(id_pedido);
+    if (!pedidoAtual) {
+      throw new Error('Pedido não encontrado');
+    }
+
+    if (pedidoAtual.status !== Status.Recebido && status === Status.Pago) {
+      throw new Error('Somente status "Recebido" pode ser atualizado para "Pago"');
+    }
+
     const resultado = await PedidoRepository.atualizarStatus(id_pedido, status);
 
     if (status === Status.Pago) {
-      const pedido = await PedidoRepository.buscarPorId(id_pedido);
-      if (!pedido) {
-        throw new Error('Pedido não encontrado');
-      }
-      await ProducaoFastFoodService.notificarProducao(pedido);
+      await ProducaoFastFoodService.notificarProducao(pedidoAtual);
     }
 
     return resultado;
