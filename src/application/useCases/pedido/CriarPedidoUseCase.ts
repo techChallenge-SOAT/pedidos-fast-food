@@ -5,7 +5,7 @@ import PedidoItem from '../../../application/valueObjects/PedidoItem';
 import { PagamentoFastFoodService } from '../../../adapters/services/pagamento-fast-food/PagamentoFastFoodService';
 
 export class CriarPedidoUseCase {
-  async execute(pedido: Pedido, itens: PedidoItem[]) {
+  static async execute(pedido: Pedido, itens: PedidoItem[]) {
     const valid_itens = await Promise.all(
       itens.map(async ({ item_id, quantidade }) => {
         const item = await ItemRepository.buscarPorId(item_id);
