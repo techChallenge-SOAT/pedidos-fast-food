@@ -7,11 +7,15 @@ services:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
     ports:
-      - '5432:5432'
+      - '5431:5432'
     volumes:
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
       - postgresdata:/var/lib/postgresql/data
+    networks:
+      - pedidos-network
 
   app:
+    container_name: pedidos
     build:
       context: .
       dockerfile: Dockerfile
@@ -24,6 +28,23 @@ services:
       - postgres
     environment:
       DATABASE_URL: postgres://postgres:postgres@postgres:5432/bd-pedidos
+      PAGAMENTO_FAST_FOOD_URL: http://pagamentos:8000
+      PRODUCAO_FAST_FOOD_URL: http://producao:4000
+      SQS_PAYMENT_QUEUE: https://sqs.us-east-1.amazonaws.com/<account-id>/enviar-para-cozinha-queue
+      SQS_PRODUCTION_QUEUE: https://sqs.us-east-1.amazonaws.com/<account-id>/enviar-para-cozinha-queue
+      AWS_REGION: us-east-1
+      AWS_ACCESS_KEY_ID: 
+      AWS_SECRET_ACCESS_KEY: 
+    networks:
+      - pedidos-network
+      - shared_network
 
 volumes:
   postgresdata:
+
+networks:
+  pedidos-network:
+    driver: bridge
+  shared_network:
+    name: shared-network
+    external: true

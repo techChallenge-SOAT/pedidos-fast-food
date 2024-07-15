@@ -16,7 +16,7 @@ export class PagamentoFastFoodService {
         }
     
         try {
-          await axios.post(url, {
+          await axios.post(`${url}/pagamento`, {
             id_pedido,
             valor,
             descricao_pedido,
