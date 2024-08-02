@@ -1,6 +1,5 @@
 import { PedidoRepository } from '../../../adapters/postgres/pedido/PedidoRepository';
 import { Status } from '../../../domain/models/Pedido';
-//import { ProducaoFastFoodService } from '../../../adapters/services/producao-fast-food/ProducaoFastFoodService';
 
 export class AlterarStatusDoPedidoUseCase {
   static async execute(id_pedido: string, status: Status) {

@@ -1,7 +1,6 @@
 import { AlterarStatusDoPedidoUseCase } from '../AlterarStatusDoPedidoUseCase';
 import { PedidoRepository } from '../../../../adapters/postgres/pedido/PedidoRepository';
 import { Status } from '../../../../domain/models/Pedido';
-//import { ProducaoFastFoodService } from '../../../../adapters/services/producao-fast-food/ProducaoFastFoodService';
 
 jest.mock('../../../../adapters/postgres/pedido/PedidoRepository');
 jest.mock('../../../../adapters/services/producao-fast-food/ProducaoFastFoodService');
