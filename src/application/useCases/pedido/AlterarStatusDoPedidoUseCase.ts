@@ -1,5 +1,5 @@
-import { PedidoRepository } from '../../../adapters/postgres/pedido/PedidoRepository';
-import { Status } from '../../../domain/models/Pedido';
+import { PedidoRepository } from "../../../adapters/postgres/pedido/PedidoRepository";
+import { Status } from "../../../domain/models/Pedido";
 
 export class AlterarStatusDoPedidoUseCase {
   static async execute(id_pedido: string, status: Status) {
@@ -9,11 +9,13 @@ export class AlterarStatusDoPedidoUseCase {
 
     const pedidoAtual = await PedidoRepository.buscarPorId(id_pedido);
     if (!pedidoAtual) {
-      throw new Error('Pedido não encontrado');
+      throw new Error("Pedido não encontrado");
     }
 
     if (pedidoAtual.status !== Status.Recebido && status === Status.Pago) {
-      throw new Error('Somente status "Recebido" pode ser atualizado para "Pago"');
+      throw new Error(
+        'Somente status "Recebido" pode ser atualizado para "Pago"',
+      );
     }
 
     const resultado = await PedidoRepository.atualizarStatus(id_pedido, status);

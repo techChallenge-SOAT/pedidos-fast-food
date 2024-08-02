@@ -1,284 +1,237 @@
 {
-	"info": {
-		"_postman_id": "e2822f2c-a2bf-4474-b334-5f951425be42",
-		"name": "pedidos-fast-food",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "9504106"
-	},
-	"item": [
-		{
-			"name": "pedidos",
-			"item": [
-				{
-					"name": "pedidos",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"exec": [
-									""
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "localhost:3000/pedidos",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"pedidos"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "pedidos",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"exec": [
-									""
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"cliente_cpf\": \"111.222.333-00\",\n    \"itens\": [\n      {\n        \"item_id\": \"21d0a7d2-88ad-4d98-81d0-2fab0ce8ede8\",\n        \"quantidade\": 2\n      }\n    ]\n  }",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "localhost:3000/pedidos",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"pedidos"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "pedidos/{id}",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"exec": [
-									"pm.environment.set(\"id\", \"1\");"
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "PATCH",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"status\": \"pronto\"\n  }",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "localhost:3000/pedidos/{{id}}",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"pedidos",
-								"{{id}}"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "pedidos/{id}",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"exec": [
-									"pm.environment.set(\"id\", \"371a1359-37fe-468c-9f36-b2509fed34e7\");"
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "localhost:3000/pedidos/{{id}}",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"pedidos",
-								"{{id}}"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "{id}/pagamento",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"exec": [
-									"pm.environment.set(\"id\", \"371a1359-37fe-468c-9f36-b2509fed34e7\");"
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "localhost:3000/pedidos/{{id}}/pagamento",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"pedidos",
-								"{{id}}",
-								"pagamento"
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "itens",
-			"item": [
-				{
-					"name": "itens",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"exec": [
-									""
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "localhost:3000/itens",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"itens"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "itens",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"exec": [
-									""
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n  \"categoria\": \"Lanche\",\n  \"nome\": \"Hambúrguer com Queijo\",\n  \"descricao\": \"Delicioso hambúrguer grelhado com queijo derretido\",\n  \"preco_unitario\": 39.99\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "localhost:3000/itens",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"itens"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "itens/{id}",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"exec": [
-									"pm.environment.set(\"id\", \"21d0a7d2-88ad-4d98-81d0-2fab0ce8ede8\");"
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "localhost:3000/itens/{{id}}",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"itens",
-								"{{id}}"
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		}
-	]
+  "info": {
+    "_postman_id": "e2822f2c-a2bf-4474-b334-5f951425be42",
+    "name": "pedidos-fast-food",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "9504106"
+  },
+  "item": [
+    {
+      "name": "pedidos",
+      "item": [
+        {
+          "name": "pedidos",
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "exec": [""],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "localhost:3000/pedidos",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["pedidos"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "pedidos",
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "exec": [""],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"cliente_cpf\": \"111.222.333-00\",\n    \"itens\": [\n      {\n        \"item_id\": \"21d0a7d2-88ad-4d98-81d0-2fab0ce8ede8\",\n        \"quantidade\": 2\n      }\n    ]\n  }",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "localhost:3000/pedidos",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["pedidos"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "pedidos/{id}",
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "exec": ["pm.environment.set(\"id\", \"1\");"],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"status\": \"pronto\"\n  }",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "localhost:3000/pedidos/{{id}}",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["pedidos", "{{id}}"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "pedidos/{id}",
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "exec": [
+                  "pm.environment.set(\"id\", \"371a1359-37fe-468c-9f36-b2509fed34e7\");"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "localhost:3000/pedidos/{{id}}",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["pedidos", "{{id}}"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "{id}/pagamento",
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "exec": [
+                  "pm.environment.set(\"id\", \"371a1359-37fe-468c-9f36-b2509fed34e7\");"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "localhost:3000/pedidos/{{id}}/pagamento",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["pedidos", "{{id}}", "pagamento"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "itens",
+      "item": [
+        {
+          "name": "itens",
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "exec": [""],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "localhost:3000/itens",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["itens"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "itens",
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "exec": [""],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"categoria\": \"Lanche\",\n  \"nome\": \"Hambúrguer com Queijo\",\n  \"descricao\": \"Delicioso hambúrguer grelhado com queijo derretido\",\n  \"preco_unitario\": 39.99\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "localhost:3000/itens",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["itens"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "itens/{id}",
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "exec": [
+                  "pm.environment.set(\"id\", \"21d0a7d2-88ad-4d98-81d0-2fab0ce8ede8\");"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "localhost:3000/itens/{{id}}",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["itens", "{{id}}"]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
 }

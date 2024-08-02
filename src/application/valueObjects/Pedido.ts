@@ -1,5 +1,5 @@
-import { v4 as uuidv4 } from 'uuid';
-import { Status } from '../../domain/models/Pedido';
+import { v4 as uuidv4 } from "uuid";
+import { Status } from "../../domain/models/Pedido";
 
 export default class Pedido {
   id: string;

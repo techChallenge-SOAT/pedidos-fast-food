@@ -1,5 +1,5 @@
-import Item from '../../../application/valueObjects/Item';
-import { Item as ItemModel } from '../models/PedidoItemModels';
+import Item from "../../../application/valueObjects/Item";
+import { Item as ItemModel } from "../models/PedidoItemModels";
 
 export class ItemRepository {
   static async criar(item: Item) {
@@ -22,7 +22,7 @@ export class ItemRepository {
 
   static async buscarTodos() {
     return ItemModel.findAll({
-      order: [['nome', 'ASC']],
+      order: [["nome", "ASC"]],
     });
   }
 }

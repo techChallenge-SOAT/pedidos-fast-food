@@ -1,10 +1,10 @@
-import { Op, Sequelize } from 'sequelize';
+import { Op, Sequelize } from "sequelize";
 import {
   Item as ItemModel,
   Pedido as PedidoModel,
-} from '../models/PedidoItemModels';
-import Pedido from '../../../application/valueObjects/Pedido';
-import { v4 as uuidv4 } from 'uuid';
+} from "../models/PedidoItemModels";
+import Pedido from "../../../application/valueObjects/Pedido";
+import { v4 as uuidv4 } from "uuid";
 
 export class PedidoRepository {
   static async criar(pedido: Pedido) {
@@ -12,14 +12,14 @@ export class PedidoRepository {
     return await PedidoModel.create({
       id,
       cliente_cpf: pedido.cliente_cpf,
-      status: 'recebido',
+      status: "recebido",
       data_pedido: Date.now(),
     });
   }
 
   static async buscarPorId(id: string) {
     return PedidoModel.findByPk(id, {
-      include: [{ model: ItemModel, as: 'itens' }],
+      include: [{ model: ItemModel, as: "itens" }],
     });
   }
 
@@ -29,7 +29,7 @@ export class PedidoRepository {
     quantidade: number,
   ) {
     if (quantidade <= 0) {
-      throw new Error('Quantidade inválida');
+      throw new Error("Quantidade inválida");
     }
     return pedido.addIten(item, { through: { quantidade } });
   }
@@ -42,7 +42,7 @@ export class PedidoRepository {
     return await PedidoModel.findAll({
       where: {
         status: {
-          [Op.not]: 'finalizado',
+          [Op.not]: "finalizado",
         },
       },
       limit: 10,
@@ -55,13 +55,13 @@ export class PedidoRepository {
         ELSE 4
       END
       `),
-        ['createdAt', 'ASC'],
+        ["createdAt", "ASC"],
       ],
       include: [
         {
           model: ItemModel,
-          as: 'itens',
-          through: { attributes: ['quantidade'] },
+          as: "itens",
+          through: { attributes: ["quantidade"] },
         },
       ],
     });
@@ -69,7 +69,7 @@ export class PedidoRepository {
 
   static async obterStatus(id: string): Promise<string | null> {
     try {
-      console.log({id})
+      console.log({ id });
       const pedido = await PedidoModel.findByPk(id);
       return pedido ? pedido.status : null;
     } catch (error) {

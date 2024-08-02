@@ -1,10 +1,10 @@
 export enum Status {
-  Recebido = 'recebido',
-  Pago = 'pago',
-  Preparacao = 'em preparação',
-  Cancelado = 'cancelado',
-  Pronto = 'pronto',
-  Finalizado = 'finalizado',
+  Recebido = "recebido",
+  Pago = "pago",
+  Preparacao = "em preparação",
+  Cancelado = "cancelado",
+  Pronto = "pronto",
+  Finalizado = "finalizado",
 }
 export default class Pedido {
   id: string;
