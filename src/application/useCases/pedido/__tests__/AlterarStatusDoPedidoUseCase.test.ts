@@ -3,9 +3,6 @@ import { PedidoRepository } from "../../../../adapters/postgres/pedido/PedidoRep
 import { Status } from "../../../../domain/models/Pedido";
 
 jest.mock("../../../../adapters/postgres/pedido/PedidoRepository");
-jest.mock(
-  "../../../../adapters/services/producao-fast-food/ProducaoFastFoodService",
-);
 
 const obterStatusMock = jest.fn();
 const atualizarStatusMock = jest.fn();
