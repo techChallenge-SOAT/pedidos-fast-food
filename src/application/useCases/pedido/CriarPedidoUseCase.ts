@@ -1,8 +1,8 @@
-import Pedido from '../../../application/valueObjects/Pedido';
-import { ItemRepository } from '../../../adapters/postgres/item/ItemRepository';
-import { PedidoRepository } from '../../../adapters/postgres/pedido/PedidoRepository';
-import PedidoItem from '../../../application/valueObjects/PedidoItem';
-import { PagamentoFastFoodService } from '../../../adapters/services/pagamento-fast-food/PagamentoFastFoodService';
+import Pedido from "../../../application/valueObjects/Pedido";
+import { ItemRepository } from "../../../adapters/postgres/item/ItemRepository";
+import { PedidoRepository } from "../../../adapters/postgres/pedido/PedidoRepository";
+import PedidoItem from "../../../application/valueObjects/PedidoItem";
+import { PagamentoFastFoodService } from "../../../adapters/services/pagamento-fast-food/PagamentoFastFoodService";
 
 export class CriarPedidoUseCase {
   static async execute(pedido: Pedido, itens: PedidoItem[]) {
@@ -10,14 +10,14 @@ export class CriarPedidoUseCase {
       itens.map(async ({ item_id, quantidade }) => {
         const item = await ItemRepository.buscarPorId(item_id);
         if (!item) {
-          throw new Error('Item não encontrado');
+          throw new Error("Item não encontrado");
         }
         return { item, quantidade };
       }),
     );
 
     const pedido_recebido = await PedidoRepository.criar(pedido);
-    
+
     await Promise.all(
       valid_itens.map(async ({ item, quantidade }) => {
         return PedidoRepository.adicionarItem(
@@ -28,12 +28,15 @@ export class CriarPedidoUseCase {
       }),
     );
 
-    const valor_total = valid_itens.reduce((total, { item, quantidade }) => total + item.preco_unitario * quantidade, 0);
+    const valor_total = valid_itens.reduce(
+      (total, { item, quantidade }) => total + item.preco_unitario * quantidade,
+      0,
+    );
     await PagamentoFastFoodService.efetuarPagamento({
-      id_pedido: pedido_recebido.id, 
+      id_pedido: pedido_recebido.id,
       valor: valor_total,
       descricao_pedido: "",
-      cpf_cliente: pedido_recebido.cliente_cpf
+      cpf_cliente: pedido_recebido.cliente_cpf,
     });
 
     return pedido_recebido;

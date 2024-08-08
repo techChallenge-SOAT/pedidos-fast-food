@@ -30,7 +30,7 @@ VALUES ('21d0a7d2-88ad-4d98-81d0-2fab0ce8ede8', 'Lanche', 'Hambúrguer com Queij
 
 -- Inserir um pedido na tabela "pedidos"
 INSERT INTO pedidos (id, cliente_cpf, data_pedido, status)
-VALUES ('371a1359-37fe-468c-9f36-b2509fed34e7', '111.222.333-00', CURRENT_TIMESTAMP, 'recebido');
+VALUES ('371a1359-37fe-468c-9f36-b2509fed34e7', '11122233300', CURRENT_TIMESTAMP, 'recebido');
 
 -- Inserir um item de pedido na tabela "pedidos_itens"
 INSERT INTO pedidos_itens (pedido_id, item_id, quantidade)

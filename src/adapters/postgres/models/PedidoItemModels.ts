@@ -6,8 +6,8 @@ import {
   BelongsToManyAddAssociationsMixin,
   BelongsToManyAddAssociationMixin,
   BelongsToManySetAssociationsMixin,
-} from 'sequelize';
-import sequelize from '../../../config/sequelize';
+} from "sequelize";
+import sequelize from "../../../config/sequelize";
 
 class Pedido extends Model {
   #id!: string;
@@ -23,7 +23,7 @@ class Pedido extends Model {
     this.#id = value;
   }
 
-  get cliente_cpf(): string | undefined{
+  get cliente_cpf(): string | undefined {
     return this.#cliente_cpf;
   }
   set cliente_cpf(value: string) {
@@ -57,8 +57,8 @@ class Pedido extends Model {
   public static associate(models: any) {
     Pedido.belongsToMany(models.Item, {
       through: models.PedidoItem,
-      foreignKey: 'pedido_id',
-      otherKey: 'item_id',
+      foreignKey: "pedido_id",
+      otherKey: "item_id",
     });
   }
 }
@@ -81,25 +81,25 @@ Pedido.init(
     },
     status: {
       type: DataTypes.ENUM(
-        'recebido',
-        'pago',
-        'em preparação',
-        'cancelado',
-        'pronto',
-        'finalizado',
+        "recebido",
+        "pago",
+        "em preparação",
+        "cancelado",
+        "pronto",
+        "finalizado",
       ),
       allowNull: false,
-      defaultValue: 'recebido',
+      defaultValue: "recebido",
     },
     createdAt: {
       type: DataTypes.DATE,
-      field: 'data_pedido',
+      field: "data_pedido",
     },
   },
   {
     sequelize,
-    modelName: 'Pedido',
-    tableName: 'pedidos',
+    modelName: "Pedido",
+    tableName: "pedidos",
     timestamps: true,
     createdAt: false,
     updatedAt: false,
@@ -133,8 +133,8 @@ class PedidoItem extends Model {
   }
 
   public static associate(models: any) {
-    PedidoItem.belongsTo(models.Item, { foreignKey: 'item_id' });
-    PedidoItem.belongsTo(models.Pedido, { foreignKey: 'pedido_id' });
+    PedidoItem.belongsTo(models.Item, { foreignKey: "item_id" });
+    PedidoItem.belongsTo(models.Pedido, { foreignKey: "pedido_id" });
   }
 }
 
@@ -155,8 +155,8 @@ PedidoItem.init(
   },
   {
     sequelize,
-    modelName: 'PedidoItem',
-    tableName: 'pedidos_itens',
+    modelName: "PedidoItem",
+    tableName: "pedidos_itens",
     timestamps: false,
   },
 );
@@ -212,7 +212,7 @@ class Item extends Model {
   public static associate(models: any) {
     Item.belongsToMany(models.Pedido, {
       through: models.PedidoItem,
-      foreignKey: 'item_id',
+      foreignKey: "item_id",
     });
   }
 }
@@ -242,17 +242,17 @@ Item.init(
   },
   {
     sequelize,
-    modelName: 'Item',
-    tableName: 'itens',
+    modelName: "Item",
+    tableName: "itens",
     timestamps: false,
   },
 );
 
 Pedido.belongsToMany(Item, {
   through: PedidoItem,
-  foreignKey: 'pedido_id',
-  as: 'itens',
+  foreignKey: "pedido_id",
+  as: "itens",
 });
-Item.belongsToMany(Pedido, { through: PedidoItem, foreignKey: 'item_id' });
+Item.belongsToMany(Pedido, { through: PedidoItem, foreignKey: "item_id" });
 
 export { Pedido, PedidoItem, Item };
